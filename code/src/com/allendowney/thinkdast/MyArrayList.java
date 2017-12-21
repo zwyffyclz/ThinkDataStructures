@@ -9,16 +9,14 @@ import java.util.ListIterator;
 /**
  * @author downey
  * @param <T>
- *
  */
 public class MyArrayList<T> implements List<T> {
-	int size;                    // keeps track of the number of elements
-	private T[] array;           // stores the elements
+    // keeps track of the number of elements
+	int size;
+    // stores the elements
+	private T[] array;
 //	private Integer[] testArray;
 
-	/**
-	 *
-	 */
 	@SuppressWarnings("unchecked")
 	public MyArrayList() {
 		// You can't instantiate an array of T[], but you can instantiate an
@@ -29,9 +27,6 @@ public class MyArrayList<T> implements List<T> {
 		size = 0;
 	}
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		// run a few simple tests
 		MyArrayList<Integer> mal = new MyArrayList<Integer>();

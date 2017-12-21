@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.allendowney.thinkdast;
 
 import java.util.Arrays;
@@ -23,8 +20,8 @@ public class MyLinkedList<E> implements List<E> {
 	 *
 	 */
 	private class Node {
-		public E cargo;
-		public Node next;
+		private E cargo;
+		private Node next;
 
 		public Node(E cargo) {
 			this.cargo = cargo;
@@ -149,14 +146,25 @@ public class MyLinkedList<E> implements List<E> {
 
 	@Override
 	public int indexOf(Object target) {
+
 		Node node = head;
-		for (int i=0; i<size; i++) {
-			if (equals(target, node.cargo)) {
+
+		for (int i = 0; i < size; i ++) {
+
+			if (equals(node.cargo, target)) {
 				return i;
 			}
 			node = node.next;
 		}
 		return -1;
+//		Node node = head;
+//		for (int i=0; i<size; i++) {
+//			if (equals(target, node.cargo)) {
+//				return i;
+//			}
+//			node = node.next;
+//		}
+//		return -1;
 	}
 
 	/** Checks whether an element of the array is the target.

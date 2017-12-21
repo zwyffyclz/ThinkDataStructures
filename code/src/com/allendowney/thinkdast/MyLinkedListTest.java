@@ -18,6 +18,7 @@ public class MyLinkedListTest extends MyArrayListTest {
 	 * @throws java.lang.Exception
 	 */
 	@Before
+	@Override
 	public void setUp() throws Exception {
 		list = new ArrayList<Integer>();
 		list.add(1);

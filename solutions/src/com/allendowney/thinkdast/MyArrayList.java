@@ -12,12 +12,11 @@ import java.util.ListIterator;
  *
  */
 public class MyArrayList<T> implements List<T> {
-	int size;                    // keeps track of the number of elements
-	private T[] array;           // stores the elements
+    // keeps track of the number of elements
+	int size;
+    // stores the elements
+	private T[] array;
 
-	/**
-	 *
-	 */
 	@SuppressWarnings("unchecked")
 	public MyArrayList() {
 		// You can't instantiate an array of T[], but you can instantiate an
@@ -27,12 +26,9 @@ public class MyArrayList<T> implements List<T> {
 		size = 0;
 	}
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		// run a few simple tests
-		MyArrayList<Integer> mal = new MyArrayList<Integer>();
+		MyArrayList<Integer> mal = new MyArrayList<>();
 		mal.add(1);
 		mal.add(2);
 		mal.add(3);
@@ -64,10 +60,12 @@ public class MyArrayList<T> implements List<T> {
 		// add the element to get the resizing
 		add(element);
 
-		// shift the elements
-		for (int i=size-1; i>index; i--) {
-			array[i] = array[i-1];
-		}
+//		// shift the elements
+//		for (int i=size-1; i>index; i--) {
+//			array[i] = array[i-1];
+//		}
+		// use arraycopy method to do the shift
+		System.arraycopy(array, index, array, index + 1, size - index - 1);
 		// put the new one in the right place
 		array[index] = element;
 	}
@@ -126,12 +124,10 @@ public class MyArrayList<T> implements List<T> {
 		return -1;
 	}
 
-	/** Checks whether an element of the array is the target.
+	/**
+     * Checks whether an element of the array is the target.
 	 *
 	 * Handles the special case that the target is null.
-	 *
-	 * @param target
-	 * @param object
 	 */
 	private boolean equals(Object target, Object element) {
 		if (target == null) {
@@ -194,9 +190,11 @@ public class MyArrayList<T> implements List<T> {
 	@Override
 	public T remove(int index) {
 		T element = get(index);
-		for (int i=index; i<size-1; i++) {
-			array[i] = array[i+1];
-		}
+//		for (int i=index; i<size-1; i++) {
+//			array[i] = array[i+1];
+//		}
+        // use arraycopy method to do the shift
+        System.arraycopy(array, index + 1, array, index, size - index - 1);
 		size--;
 		return element;
 	}
